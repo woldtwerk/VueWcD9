@@ -1,0 +1,19 @@
+name: Custom Elements
+type: theme
+'base theme': false
+description: 'Adds custom element tags to templates.'
+package: Core
+core_version_requirement: ^8.8 || ^9
+screenshot: screenshot.svg
+libraries:
+  - custom_elements/core
+  # - core/drupal
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
