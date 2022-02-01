@@ -28,28 +28,34 @@
     <head>
       <head-placeholder token="{{ placeholder_token|raw }}">
       <title>{{ head_title|safe_join(' | ') }}</title>
+      <meta name="description" content="Vue Custom Elements in Drupal">
 
-      {# Preload Fonts #}
-      {# {% include "@wingsuit/misc/preload-fonts.html.twig" %} #}
+      <link rel="icon" href="/themes/custom/custom_elements/dist/favicon.svg" type="image/svg+xml">
+      <meta name="msapplication-TileColor" content="#00aba9">
+      <meta name="theme-color" content="#ffffff">
+
       <css-placeholder token="{{ placeholder_token|raw }}">
       <js-placeholder token="{{ placeholder_token|raw }}">
-      <script type="module" src="https://localhost:3000/@vite/client"></script>
-      <script type="module" src="https://localhost:3000/src/main.ts"></script>
-      {# <link rel='stylesheet' href='/themes/custom/custom_elements/dist/style.css'> #}
+
+      {# dev start #}
+      {# <script type="module" src="https://localhost:3000/@vite/client"></script>
+      <script type="module" src="https://localhost:3000/src/main.ts"></script> #}
+      {# dev end #}
+
+      {# prod start #}
+      <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
+      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script>
+      {# prod end #}
     </head>
     <body{{ attributes }}>
-      {#
-        Keyboard navigation/accessibility link to main content section in
-        page.html.twig.
-      #}
-      <a href="#main-content" class="visually-hidden focusable">
-        {{ 'Skip to main content'|t }}
-      </a>
+
       {{ page_top }}
       {{ page }}
       {{ page_bottom }}
 
-      {# <script type="module" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script> #}
+      {# prod start #}
+      <link rel='stylesheet' href='/themes/custom/custom_elements/dist/style.css'>
+      {# prod end #}
 
       <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 

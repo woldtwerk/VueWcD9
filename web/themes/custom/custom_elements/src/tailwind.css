@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 .views-element-container > div {
-  @apply grid grid-cols-3 gap-8;
+  @apply grid sm:grid-cols-3 gap-8;
+
+  .views-row > * {
+    @apply h-full;
+  }
 }
 
 main {
-  @apply max-w-7xl mx-auto p-8;
+  @apply max-w-7xl mx-auto p-4 sm:p-6;
 }
 
 .feed-icon {
@@ -25,4 +29,8 @@ body {
 
 html.is-animating .transition-fade {
   opacity: 0;
+}
+
+img {
+  @apply w-full;
 }

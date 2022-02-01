@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <Header />
+  <Header data-router/>
   <!-- <slot name="header"></slot> -->
   <slot name="breadcrumb"></slot>
   <slot name="highlighted"></slot>

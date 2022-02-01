@@ -49,8 +49,15 @@
 {% set attributes = attributes.setAttribute('label', label)  %}
 {% set attributes = attributes.setAttribute('label_hidden', label_hidden)  %}
 
+{% if field_type == 'text_with_summary' %}
+  {% set attributes = attributes.addClass('prose prose-slate lg:prose-lg')  %}
+{% endif %}
+
 <field-{{ variant }} {{ attributes }}>
   {% for item in items %}
+
+    {# {% set item['attributes'] = item['attributes'].addClass('') %} #}
+
     {% if item.attributes|length != 0 %}
     <div{{ item.attributes }}>
     {% endif %}

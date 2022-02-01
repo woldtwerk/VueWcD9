@@ -64,8 +64,15 @@
 
   {{ page.help }}
 
+  {#
+    Keyboard navigation/accessibility link to main content section in
+    page.html.twig.
+  #}
+  <span id="main-content" class="visually-hidden focusable" tabindex="-1">
+    {{ 'Skip to main content'|t }}
+  </span>
   <main role="main" slot="main" data-router class="transition-fade">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
     {{ page.content }}
 
   </main>

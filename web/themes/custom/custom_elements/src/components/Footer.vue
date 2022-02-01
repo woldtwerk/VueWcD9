@@ -1,15 +1,15 @@
 <template>
   <footer class="bg-gray-800" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
       <div class="pb-8 xl:grid xl:gap-8 xl:grid-cols-5">
-        <div class="grid gap-8 grid-cols-2 xl:col-span-4">
+        <div class="grid grid-cols-2 gap-8 xl:col-span-4">
           <div class="md:grid md:gap-8 md:grid-cols-2">
             <div>
-              <h3 class="font-semibold text-sm tracking-wider text-gray-400 uppercase">
+              <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">
                 Solutions
               </h3>
-              <ul role="list" class="space-y-4 mt-4">
+              <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.solutions" :key="item.name">
                   <a :href="item.href" class="text-base text-gray-300 hover:text-white">
                     {{ item.name }}
@@ -18,10 +18,10 @@
               </ul>
             </div>
             <div class="mt-12 md:mt-0">
-              <h3 class="font-semibold text-sm tracking-wider text-gray-400 uppercase">
+              <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">
                 Support
               </h3>
-              <ul role="list" class="space-y-4 mt-4">
+              <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.support" :key="item.name">
                   <a :href="item.href" class="text-base text-gray-300 hover:text-white">
                     {{ item.name }}
@@ -32,10 +32,10 @@
           </div>
           <div class="md:grid md:gap-8 md:grid-cols-2">
             <div>
-              <h3 class="font-semibold text-sm tracking-wider text-gray-400 uppercase">
+              <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">
                 Company
               </h3>
-              <ul role="list" class="space-y-4 mt-4">
+              <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.company" :key="item.name">
                   <a :href="item.href" class="text-base text-gray-300 hover:text-white">
                     {{ item.name }}
@@ -44,10 +44,10 @@
               </ul>
             </div>
             <div class="mt-12 md:mt-0">
-              <h3 class="font-semibold text-sm tracking-wider text-gray-400 uppercase">
+              <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">
                 Legal
               </h3>
-              <ul role="list" class="space-y-4 mt-4">
+              <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.legal" :key="item.name">
                   <a :href="item.href" class="text-base text-gray-300 hover:text-white">
                     {{ item.name }}
@@ -58,29 +58,29 @@
           </div>
         </div>
         <div class="mt-12 xl:mt-0">
-          <h3 class="font-semibold text-sm tracking-wider text-gray-400 uppercase">
+          <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">
             Language &amp; Currency
           </h3>
           <form class="mt-4 sm:max-w-xs">
             <fieldset class="w-full">
               <label for="language" class="sr-only">Language</label>
               <div class="relative">
-                <select id="language" name="language" class="bg-none border border-transparent rounded-md bg-gray-700 text-base text-white w-full py-2 pr-10 pl-3 appearance-none block sm:text-sm focus:border-white focus:outline-none focus:ring-white">
+                <select id="language" name="language" class="block w-full py-2 pl-3 pr-10 text-base text-white bg-gray-700 border border-transparent rounded-md appearance-none bg-none sm:text-sm focus:border-white focus:outline-none focus:ring-white">
                   <option selected>English</option>
                   <option>French</option>
                   <option>German</option>
                   <option>Japanese</option>
                   <option>Spanish</option>
                 </select>
-                <div class="flex px-2 inset-y-0 right-0 pointer-events-none absolute items-center">
-                  <ChevronDownIcon class="h-4 text-white w-4" aria-hidden="true" />
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <ChevronDownIcon class="w-4 h-4 text-white" aria-hidden="true" />
                 </div>
               </div>
             </fieldset>
-            <fieldset class="mt-4 w-full">
+            <fieldset class="w-full mt-4">
               <label for="currency" class="sr-only">Currency</label>
               <div class="mt-1.5 relative">
-                <select id="currency" name="currency" class="bg-none border border-transparent rounded-md bg-gray-700 text-base text-white w-full py-2 pr-10 pl-3 appearance-none block sm:text-sm focus:border-white focus:outline-none focus:ring-white">
+                <select id="currency" name="currency" class="block w-full py-2 pl-3 pr-10 text-base text-white bg-gray-700 border border-transparent rounded-md appearance-none bg-none sm:text-sm focus:border-white focus:outline-none focus:ring-white">
                   <option>ARS</option>
                   <option selected>AUD</option>
                   <option>CAD</option>
@@ -90,17 +90,17 @@
                   <option>JPY</option>
                   <option>USD</option>
                 </select>
-                <div class="flex px-2 inset-y-0 right-0 pointer-events-none absolute items-center">
-                  <ChevronDownIcon class="h-4 text-white w-4" aria-hidden="true" />
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <ChevronDownIcon class="w-4 h-4 text-white" aria-hidden="true" />
                 </div>
               </div>
             </fieldset>
           </form>
         </div>
       </div>
-      <div class="border-t border-gray-700 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
+      <div class="pt-8 border-t border-gray-700 lg:flex lg:items-center lg:justify-between xl:mt-0">
         <div>
-          <h3 class="font-semibold text-sm tracking-wider text-gray-400 uppercase">
+          <h3 class="text-sm font-semibold tracking-wider text-gray-400 uppercase">
             Subscribe to our newsletter
           </h3>
           <p class="mt-2 text-base text-gray-300">
@@ -109,19 +109,19 @@
         </div>
         <form class="mt-4 sm:flex sm:max-w-md lg:mt-0">
           <label for="email-address" class="sr-only">Email address</label>
-          <input type="email" name="email-address" id="email-address" autocomplete="email" required class="bg-white border border-transparent rounded-md text-base min-w-0 w-full py-2 px-4 placeholder-gray-500 text-gray-900 appearance-none sm:max-w-xs focus:border-white focus:outline-none focus:ring-white focus:placeholder-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Enter your email" />
-          <div class="rounded-md mt-3 sm:flex-shrink-0 sm:mt-0 sm:ml-3">
-            <button type="submit" class="border border-transparent rounded-md flex font-medium bg-indigo-500 text-base text-white w-full py-2 px-4 items-center justify-center hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
+          <input type="email" name="email-address" id="email-address" autocomplete="email" required class="w-full min-w-0 px-4 py-2 text-base text-gray-900 placeholder-gray-500 bg-white border border-transparent rounded-md appearance-none sm:max-w-xs focus:border-white focus:outline-none focus:ring-white focus:placeholder-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Enter your email" />
+          <div class="mt-3 rounded-md sm:flex-shrink-0 sm:mt-0 sm:ml-3">
+            <button type="submit" class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
               Subscribe
             </button>
           </div>
         </form>
       </div>
-      <div class="border-t border-gray-700 mt-8 pt-8 md:flex md:items-center md:justify-between">
+      <div class="pt-8 mt-8 border-t border-gray-700 md:flex md:items-center md:justify-between">
         <div class="flex space-x-6 md:order-2">
           <a v-for="item in navigation.social" :key="item.name" :href="item.href" class="text-gray-400 hover:text-gray-300">
             <span class="sr-only">{{ item.name }}</span>
-            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+            <component :is="item.icon" class="w-6 h-6" aria-hidden="true" />
           </a>
         </div>
         <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">

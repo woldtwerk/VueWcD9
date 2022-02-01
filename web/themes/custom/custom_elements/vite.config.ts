@@ -4,6 +4,7 @@ import mkcert from 'vite-plugin-mkcert'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/themes/custom/custom_elements/dist/',
   plugins: [
     mkcert(),
     vue({
@@ -13,7 +14,7 @@ export default defineConfig({
           isCustomElement: tag => tag.includes('-')
         }
       }
-    })
+    }),
   ],
   build: {
     lib: {

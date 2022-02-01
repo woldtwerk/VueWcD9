@@ -29,7 +29,7 @@ import NodeTeaser from "./components/NodeTeaser.vue";
 import Field from "./components/Field.vue";
 import DialogOffcanvas from "./components/DialogOffcanvas.vue";
 import Breadcrumb from "./components/Breadcrumb.vue";
-import Header from "./components/Header.vue";
+import LocalTasks from "./components/LocalTasks.vue";
 
 // createApp(App).mount('#app')
 
@@ -38,9 +38,10 @@ customElements.define("node-teaser", defineCustomElement(NodeTeaser));
 customElements.define("field-", defineCustomElement(Field));
 customElements.define("dialog-offcanvas", defineCustomElement(DialogOffcanvas));
 customElements.define("breadcrumb-", defineCustomElement(Breadcrumb));
+customElements.define("local-tasks", defineCustomElement(LocalTasks));
 
 const swupOptions = {
-  containers: [".dialog-off-canvas-main-canvas"],
+  containers: ["[data-router]"],
   linkSelector:
     'a[href^="' +
     window.location.origin +

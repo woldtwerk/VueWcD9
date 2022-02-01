@@ -374,12 +374,12 @@ export class VueElement extends BaseClass {
     return vnode
   }
 
-  private _applyStyles(styles: string[] | undefined) {
+  private _applyStyles(styles: string[] = []) {
     // @ts-expect-error
     adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')
-    if (styles) {
+    // if (styles) {
       // @ts-expect-error
       adoptStyles(this.shadowRoot!, [baseStyles, ...styles], this._def.__hmrId)
-    }
+    // }
   }
 }

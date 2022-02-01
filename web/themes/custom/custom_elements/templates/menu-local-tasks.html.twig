@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display primary and secondary local tasks.
+ *
+ * Available variables:
+ * - primary: HTML list items representing primary tasks.
+ * - secondary: HTML list items representing secondary tasks.
+ *
+ * Each item in these variables (primary and secondary) can be individually
+ * themed in menu-local-task.html.twig.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# {% set icons = {
+  view: 'document-text'
+} %} #}
+
+{# {{ dd(primary) }} #}
+
+
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  {# <ul>{{ primary }}</ul> #}
+  {{ primary|cache_metadata }}
+
+{# document-text
+pencil-alt
+trash
+document-duplicate #}
+
+  {% set tasks = [] %}
+  {% for key, item in primary %}
+    {% set tasks = tasks|merge([{
+      key: key,
+      title: item['#link'].title,
+      url: item['#link'].url|render,
+      active: item['#active'],
+    }]) %}
+  {% endfor %}
+  <local-tasks tasks="{{ tasks|json_encode }}"></local-tasks>
+{% endif %}
+{% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+  {# <ul>{{ secondary }}</ul> #}
+
+  {% set tasks = [] %}
+  {% for item in secondary %}
+    {% set tasks = tasks|merge({
+      title: item['#link'].title,
+      url: item['#link'].url|render
+    }) %}
+  {% endfor %}
+  <local-tasks tasks="{{ tasks|json_encode }}"></local-tasks>
+  {{ secondary|cache_metadata }}
+{% endif %}
+
+{# {{ dd(primary) }} #}
+
+
+
+
+
+{# {{ dd(primary[0]['#link']) }} #}

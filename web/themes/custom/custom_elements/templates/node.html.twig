@@ -80,9 +80,6 @@
 {% set attributes = attributes.setAttribute('bundle', node.bundle)  %}
 
 {% set variant_or_viemode = variant ? variant : view_mode %}
-
-{{ node.bundle }}
-
 <node-{{ variant_or_viemode }} {{ attributes }}>
   {% if title_prefix %}<div slot="title_prefix">{{ title_prefix }}</div>{% endif %}
   {% if title_suffix %}<div slot="title_suffix">{{ title_suffix }}</div>{% endif %}
