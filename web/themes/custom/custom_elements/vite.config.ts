@@ -21,7 +21,9 @@ export default defineConfig({
       entry: 'src/main.ts',
       formats: ['es'],
     },
-
+    rollupOptions: {
+      external: ['vue'],
+    }
   },
   server: {
     https: true,
