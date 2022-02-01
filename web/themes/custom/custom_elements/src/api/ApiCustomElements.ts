@@ -300,7 +300,8 @@ export class VueElement extends BaseClass {
   ) {
     // const host = this instanceof HTMLElement ? this : this.host
     if (val !== this._props[key]) {
-      this._props[key] = val
+      // @todo json conversion
+      this._props[key] = typeof val === 'string' && val.match(/(\[|\{)/) ? JSON.parse(val) : val
       if (shouldUpdate && this._instance) {
         this._update()
       }
@@ -378,7 +379,7 @@ export class VueElement extends BaseClass {
     adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')
     if (styles) {
       // @ts-expect-error
-      adoptStyles(this.shadowRoot!, [...styles, baseStyles], this._def.__hmrId)
+      adoptStyles(this.shadowRoot!, [baseStyles, ...styles], this._def.__hmrId)
     }
   }
 }

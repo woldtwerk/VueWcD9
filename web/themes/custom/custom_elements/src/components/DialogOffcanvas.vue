@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <Header />
-  <slot name="header"></slot>
+  <!-- <slot name="header"></slot> -->
   <slot name="breadcrumb"></slot>
   <slot name="highlighted"></slot>
   <slot name="main"></slot>
