@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { DocumentTextIcon, PencilAltIcon, TrashIcon, DocumentDuplicateIcon } from '@heroicons/vue/solid'
-import { RenderFunction } from 'vue'
+import { RenderFunction, ref, watch, watchEffect } from 'vue'
 
 interface LocalTask {
   key: string
@@ -17,6 +17,8 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const select = ref()
+
 const icons: Record<string, RenderFunction> = {
   'entity.node.canonical': DocumentTextIcon,
   'entity.node.edit_form': PencilAltIcon,
@@ -31,6 +33,8 @@ const tabs = props.tasks.map(tab => {
   }
 })
 
+const goTo = (e: Event) =>  window.location.href = tabs[(e.target as HTMLSelectElement).selectedIndex].url
+
 </script>
 
 <template>
@@ -38,8 +42,8 @@ const tabs = props.tasks.map(tab => {
     <div class="sm:hidden">
       <label for="tabs" class="sr-only">Select a tab</label>
       <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-      <select id="tabs" title="tabs" class="block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-        <option v-for="tab in tabs" :key="tab.key" :selected="tab.active">{{ tab.title }}</option>
+      <select id="tabs" title="tabs" class="block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" @change="goTo">
+        <option v-for="tab in tabs" :key="tab.key" :selected="tab.active" >{{ tab.title }}</option>
       </select>
     </div>
     <div class="hidden sm:block">

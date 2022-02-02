@@ -34,3 +34,7 @@ html.is-animating .transition-fade {
 img {
   @apply w-full;
 }
+
+:not(:defined) {
+  display: block;
+}

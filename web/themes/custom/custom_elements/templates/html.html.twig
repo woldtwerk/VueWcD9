@@ -38,19 +38,20 @@
       <js-placeholder token="{{ placeholder_token|raw }}">
 
       {# dev start #}
-      {# <script type="module" src="https://localhost:3000/@vite/client"></script>
-      <script type="module" src="https://localhost:3000/src/main.ts"></script> #}
+      <script type="module" src="https://localhost:3000/@vite/client"></script>
+      <script type="module" src="https://localhost:3000/src/main.ts"></script>
       {# dev end #}
 
       {# prod start #}
-      <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
-      <script type="importmap">
+      {# <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style"> #}
+      <!--script type="importmap">
       { "imports": {
         "vue": "https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.runtime.esm-browser.prod.js"
       } }
-      </script>
+      </script-->
+      {# prod end #}
 
-      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script>
+      {# <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script> #}
       {# prod end #}
     </head>
     <body{{ attributes }}>
@@ -60,7 +61,7 @@
       {{ page_bottom }}
 
       {# prod start #}
-      <link rel='stylesheet' href='/themes/custom/custom_elements/dist/style.css'>
+      {# <link rel='stylesheet' href='/themes/custom/custom_elements/dist/style.css'> #}
       {# prod end #}
 
       <js-bottom-placeholder token="{{ placeholder_token|raw }}">

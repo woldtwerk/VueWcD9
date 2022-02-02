@@ -15,8 +15,10 @@
  */
 #}
 
-<region-{{ variant }} slot="{{ region }}" data-router class="transition-fade">
-  {{ content }}
+<region-{{ variant }} slot="{{ region }}" data-router >
+  <div>
+    {{ content }}
+  </div>
 </region-{{ variant }}>
 
 {# {% if content %}
