@@ -5,9 +5,11 @@
 
 <script setup lang="ts">
 defineProps<{
-  slot: any,
+  slot?: string,
   label: string,
-  label_hidden: boolean
+  label_hidden?: boolean
+  class?: string
+  property?: string
 }>()
 </script>
 

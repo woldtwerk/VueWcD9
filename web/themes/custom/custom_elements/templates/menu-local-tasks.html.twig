@@ -23,14 +23,6 @@
 
 {% if primary %}
   <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
-  {# <ul>{{ primary }}</ul> #}
-  {{ primary|cache_metadata }}
-
-{# document-text
-pencil-alt
-trash
-document-duplicate #}
-
   {% set tasks = [] %}
   {% for key, item in primary %}
     {% set tasks = tasks|merge([{
@@ -40,12 +32,11 @@ document-duplicate #}
       active: item['#active'],
     }]) %}
   {% endfor %}
-  <local-tasks tasks="{{ tasks|json_encode }}"></local-tasks>
+  <local-tasks .tasks="{{ tasks|json_encode }}"></local-tasks>
+  {{ primary|cache_metadata }}
 {% endif %}
 {% if secondary %}
   <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
-  {# <ul>{{ secondary }}</ul> #}
-
   {% set tasks = [] %}
   {% for item in secondary %}
     {% set tasks = tasks|merge({
@@ -56,11 +47,3 @@ document-duplicate #}
   <local-tasks tasks="{{ tasks|json_encode }}"></local-tasks>
   {{ secondary|cache_metadata }}
 {% endif %}
-
-{# {{ dd(primary) }} #}
-
-
-
-
-
-{# {{ dd(primary[0]['#link']) }} #}

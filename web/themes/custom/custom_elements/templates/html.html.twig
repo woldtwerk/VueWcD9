@@ -30,29 +30,32 @@
       <title>{{ head_title|safe_join(' | ') }}</title>
       <meta name="description" content="Vue Custom Elements in Drupal">
 
-      <link rel="icon" href="/themes/custom/custom_elements/dist/favicon.svg" type="image/svg+xml">
-      <meta name="msapplication-TileColor" content="#00aba9">
+      {# <link rel="icon" href="/themes/custom/custom_elements/dist/favicon.svg" type="image/svg+xml"> #}
+      {# <meta name="msapplication-TileColor" content="#00aba9">
+      <meta name="theme-color" content="#ffffff"> #}
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/custom_elements/dist/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/themes/custom/custom_elements/dist/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/themes/custom/custom_elements/dist/favicon-16x16.png">
+      <link rel="manifest" href="/themes/custom/custom_elements/dist/manifest.webmanifest">
+      <link rel="mask-icon" href="/themes/custom/custom_elements/dist/safari-pinned-tab.svg" color="#5bbad5">
+      <link rel="shortcut icon" href="/themes/custom/custom_elements/dist/favicon.ico">
+      <meta name="msapplication-TileColor" content="#2b5797">
+      <meta name="msapplication-config" content="/themes/custom/custom_elements/dist/browserconfig.xml">
       <meta name="theme-color" content="#ffffff">
 
       <css-placeholder token="{{ placeholder_token|raw }}">
       <js-placeholder token="{{ placeholder_token|raw }}">
 
       {# dev start #}
-      <script type="module" src="https://localhost:3000/@vite/client"></script>
-      <script type="module" src="https://localhost:3000/src/main.ts"></script>
+      {# <script type="module" src="https://localhost:3000/@vite/client"></script>
+      <script type="module" src="https://localhost:3000/src/main.ts"></script> #}
       {# dev end #}
 
-      {# prod start #}
-      {# <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style"> #}
-      <!--script type="importmap">
-      { "imports": {
-        "vue": "https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.runtime.esm-browser.prod.js"
-      } }
-      </script-->
-      {# prod end #}
-
-      {# <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script> #}
-      {# prod end #}
+      {# prod start header #}
+      <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
+      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/vue.runtime.esm-browser.prod.js"></script>
+      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script>
     </head>
     <body{{ attributes }}>
 
@@ -60,9 +63,9 @@
       {{ page }}
       {{ page_bottom }}
 
-      {# prod start #}
-      {# <link rel='stylesheet' href='/themes/custom/custom_elements/dist/style.css'> #}
-      {# prod end #}
+      {# prod start body #}
+      <link rel='stylesheet' title="tailwind" href='/themes/custom/custom_elements/dist/style.css'>
+      {# prod end body #}
 
       <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 

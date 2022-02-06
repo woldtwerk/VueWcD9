@@ -3,7 +3,9 @@ import Header from './Header.vue'
 import Footer from './Footer.vue'
 
 defineProps<{
-  slot: any,
+  slot?: string,
+  class?: string
+  dataOffCanvasMainCanvas?: string
 }>()
 </script>
 

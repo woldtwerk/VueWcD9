@@ -1,0 +1,27 @@
+{
+    "name": "Vue + WC + Drupal",
+    "short_name": "vuewcd9",
+    "description": "Proof of concept of using vue webcomponents in drupal",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/themes/custom/custom_elements/dist/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/themes/custom/custom_elements/dist/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/themes/custom/custom_elements/dist/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}

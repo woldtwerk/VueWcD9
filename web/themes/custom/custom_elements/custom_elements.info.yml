@@ -4,10 +4,9 @@ type: theme
 description: 'Adds custom element tags to templates.'
 package: Core
 core_version_requirement: ^8.8 || ^9
-screenshot: screenshot.svg
+screenshot: public/pwa-512x512.png
 libraries:
   - custom_elements/core
-  # - core/drupal
 regions:
   header: Header
   primary_menu: 'Primary menu'

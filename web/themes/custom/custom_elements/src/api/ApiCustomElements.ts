@@ -23,7 +23,7 @@ import {
 } from '@vue/runtime-core'
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
 import { hydrate, render } from 'vue'
-import { adoptStyles, baseStyles } from './styles'
+import { adoptStyles, baseStyles, supportsAdoptingStyleSheets } from '~/api/styles'
 
 export interface CustomComponentInternalInstance extends ComponentInternalInstance {
   host: VueElement
@@ -298,10 +298,16 @@ export class VueElement extends BaseClass {
     shouldReflect = true,
     shouldUpdate = true
   ) {
-    // const host = this instanceof HTMLElement ? this : this.host
-    if (val !== this._props[key]) {
-      // @todo json conversion
-      this._props[key] = typeof val === 'string' && val.match(/(\[|\{)/) ? JSON.parse(val) : val
+    if (val !== this._props[key]) { 
+      if(key.match(/^\./)) {
+        try {
+          key = key.slice(1)
+          this._props[key] = JSON.parse(val)
+        } catch {}
+      } else {
+        this._props[key] = val
+      }
+
       if (shouldUpdate && this._instance) {
         this._update()
       }
@@ -375,11 +381,10 @@ export class VueElement extends BaseClass {
   }
 
   private _applyStyles(styles: string[] = []) {
+    supportsAdoptingStyleSheets
+      ? adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')
+      : adoptStyles(this.shadowRoot!, [window.tw.styles], 'tailwind')
     // @ts-expect-error
-    adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')
-    // if (styles) {
-      // @ts-expect-error
-      adoptStyles(this.shadowRoot!, [baseStyles, ...styles], this._def.__hmrId)
-    // }
+    adoptStyles(this.shadowRoot!, [baseStyles, ...styles], this._def.__hmrId)
   }
 }

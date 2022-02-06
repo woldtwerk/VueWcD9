@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { DocumentTextIcon, PencilAltIcon, TrashIcon, DocumentDuplicateIcon } from '@heroicons/vue/solid'
-import { RenderFunction, ref, watch, watchEffect } from 'vue'
+import { RenderFunction, ref } from 'vue'
 
 interface LocalTask {
   key: string

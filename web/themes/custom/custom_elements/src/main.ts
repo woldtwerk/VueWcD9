@@ -1,75 +1,40 @@
-import { defineCustomElement } from './api/ApiCustomElements'
-import { supportsAdoptingStyleSheets } from './api/styles'
+import { defineCustomElement } from '~/api/ApiCustomElements'
+import { hyphenate } from '@vue/shared'
 
-import tailwind from './tailwind.css'
+/**
+ * Import modules.
+ */
+const modules = (import.meta.globEager('./modules/*.ts'))
 
-// @ts-ignore
-import Swup from "swup/lib/index.js";
-// @ts-ignore
-import SwupProgressPlugin from "@swup/progress-plugin";
-// @ts-ignore
-import SwupScrollPlugin from '@swup/scroll-plugin';
-
-// @ts-expect-error
-window.tw = {
-  styles: tailwind
-}
-if(supportsAdoptingStyleSheets) {
-  const sheet = new CSSStyleSheet()
-  sheet.replaceSync(tailwind)
-
-  // @ts-expect-error
-  window.tw.sheet = sheet
+/**
+ * 
+ * @param filename of vue file
+ * @returns valid ce tagname. Adds hyphen at end if hyphenating filename doesn't produce name with hyphen.
+ */
+const getTagname = (filename: string) => {
+  let tagName = hyphenate(filename.split('/').at(-1).replace(/(\.ce\.vue|\.lazy\.vue)/, ''))
+  return tagName.includes('-') ? tagName : `${tagName}-`
 }
 
-// console.log(tailwind)
+/**
+ * Import all vue ce and define them as custom elements.
+ */
+const CustomElements = import.meta.globEager('./components/*.ce.vue')
+Object.keys(CustomElements).forEach(ce => {
+  customElements.define(getTagname(ce), defineCustomElement(CustomElements[ce].default))
+})
 
-import Node from "./components/NodeFull.vue";
-import NodeTeaser from "./components/NodeTeaser.vue";
-import Field from "./components/Field.vue";
-import DialogOffcanvas from "./components/DialogOffcanvas.vue";
-import Breadcrumb from "./components/Breadcrumb.vue";
-import LocalTasks from "./components/LocalTasks.vue";
+/**
+ * Lazy import all vue ce and define them as custom elements.
+ */
+const LazyCustomElements = import.meta.glob('./components/*.lazy.vue')
+Object.keys(LazyCustomElements).forEach(async(ce) => {
+  customElements.define(getTagname(ce), defineCustomElement(await (await LazyCustomElements[ce]()).default))
+})
 
-// createApp(App).mount('#app')
-
-customElements.define("node-full", defineCustomElement(Node));
-customElements.define("node-teaser", defineCustomElement(NodeTeaser));
-customElements.define("field-", defineCustomElement(Field));
-customElements.define("dialog-offcanvas", defineCustomElement(DialogOffcanvas));
-customElements.define("breadcrumb-", defineCustomElement(Breadcrumb));
-customElements.define("local-tasks", defineCustomElement(LocalTasks));
-
-const swupOptions = {
-  containers: ["[data-router]"],
-  linkSelector:
-    'a[href^="' +
-    window.location.origin +
-    '"]:not([data-no-swup]):not([data-drupal-link-system-path]):not([href^="/admin"]), ' +
-    'a[href^="/"]:not([data-no-swup]):not([href^="/admin"]):not([href*="/edit/"]):not([href$="/edit"]), ' +
-    'a[href^="#"]:not([data-no-swup])',
-};
-
-const swup = new Swup({
-  ...swupOptions,
-  plugins: [
-    new SwupProgressPlugin(),
-    new SwupScrollPlugin({
-      animateScroll: false
-    })],
-});
-
-// @ts-expect-error
-window.swup = swup
-
-swup.on("contentReplaced", () => {
-  swup.options.containers.forEach((container: string) => {
-    const context = document.querySelectorAll(container);
-    context.forEach((element) => {
-      console.log('loaded')
-      if(window.hasOwnProperty('Drupal')) {
-        Drupal.attachBehaviors(element, drupalSettings);
-      }
-    });
-  });
-});
+/**
+ * Regist Service Worker.
+ */
+window.addEventListener('load', () => {
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js')
+})

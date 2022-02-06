@@ -1,5 +1,16 @@
 <script setup lang="ts">
-defineProps<{ title: string }>()
+
+defineProps<{ 
+  title: string
+  role: string
+  about: string
+  typeof: string
+  url: string
+  view: 'full' | 'teaser'
+  bundle: string
+  dataHistoryNodeId?: string
+}>()
+
 </script>
 
 <template>
@@ -17,3 +28,6 @@ defineProps<{ title: string }>()
 </div>
 </template>
 
+<style lang="postcss">
+
+</style> 

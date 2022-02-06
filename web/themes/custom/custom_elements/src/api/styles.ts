@@ -26,7 +26,7 @@ export const adoptStyles = (
   const css = styles.join('')
 
  if (supportsAdoptingStyleSheets) {
-   const sheets = renderRoot.adoptedStyleSheets
+   const sheets = renderRoot.adoptedStyleSheets || []
    const oldSheet = import.meta.env.DEV && __hmrId ? sheets.find((sheet) => sheet.__hmrId === __hmrId) : false
 
    // Check if this StyleSheet exists already. Replace content if it does. Otherwise construct a new CSSStyleSheet.
@@ -38,7 +38,7 @@ export const adoptStyles = (
        styleSheet.__hmrId = __hmrId
      styleSheet.replaceSync(css)
      renderRoot.adoptedStyleSheets = [
-       ...renderRoot.adoptedStyleSheets,
+       ...renderRoot.adoptedStyleSheets || [],
        styleSheet,
      ]
    }

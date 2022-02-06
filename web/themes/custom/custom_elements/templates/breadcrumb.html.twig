@@ -11,7 +11,7 @@
 #}
 
 {% if breadcrumb %}
-  <breadcrumb- role="navigation" aria-labelledby="system-breadcrumb" breadcrumbs="{{ breadcrumb|json_encode }}">
+  <breadcrumb- role="navigation" aria-labelledby="system-breadcrumb" .breadcrumbs="{{ breadcrumb|json_encode }}">
     <h2 slot="label" id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
   </breadcrumb->
 {% endif %}
