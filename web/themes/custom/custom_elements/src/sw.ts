@@ -1,16 +1,16 @@
 import { registerRoute } from "workbox-routing"
-import { ExpirationPlugin } from "workbox-expiration"
-import {
-  CacheFirst,
-  NetworkFirst,
-} from "workbox-strategies"
-import { CacheableResponsePlugin } from 'workbox-cacheable-response'
+import { ExpirationPlugin } from "workbox-expiration";
+import { CacheFirst, NetworkFirst } from "workbox-strategies"
+import { CacheableResponsePlugin } from "workbox-cacheable-response"
 
 /**
  * Cache Images, JS, CSS.
  */
 registerRoute(
-  ({ request }) => request.destination === "image" || "script" || request.destination === "style",
+  ({ request }) =>
+    request.destination === "image" ||
+    "script" ||
+    request.destination === "style",
   new CacheFirst({
     cacheName: "assets",
     plugins: [
@@ -20,20 +20,20 @@ registerRoute(
       }),
     ],
   })
-)
+);
 
+/**
+ * Cache Drupal pages.
+ */
 registerRoute(
-  // Check to see if the request is a navigation to a new page
-  ({ request }) => request.mode === 'navigate',
-  // Use a Network First caching strategy
+  ({ url }) => url.origin === self.location.origin,
   new NetworkFirst({
-    // Put all cached files in a cache named 'pages'
-    cacheName: 'pages',
+    cacheName: "pages",
     plugins: [
       // Ensure that only requests that result in a 200 status are cached
       new CacheableResponsePlugin({
         statuses: [200],
       }),
     ],
-  }),
-)
+  })
+);
