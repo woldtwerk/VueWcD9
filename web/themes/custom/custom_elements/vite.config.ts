@@ -6,7 +6,6 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/themes/custom/custom_elements/dist/',
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,

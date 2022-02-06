@@ -26,7 +26,9 @@ registerRoute(
  * Cache Drupal pages.
  */
 registerRoute(
-  ({ url }) => url.origin === self.location.origin,
+  ({ url }) => url.origin === self.location.origin 
+    && !url.pathname.startsWith('/admin')
+    && !url.pathname.endsWith('/edit'),
   new NetworkFirst({
     cacheName: "pages",
     plugins: [

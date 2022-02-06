@@ -35,6 +35,6 @@ Object.keys(LazyCustomElements).forEach(async(ce) => {
 /**
  * Regist Service Worker.
  */
-window.addEventListener('load', () => {
+import.meta.env.PROD && window.addEventListener('load', () => {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js')
 })

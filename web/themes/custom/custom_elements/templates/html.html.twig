@@ -30,10 +30,6 @@
       <title>{{ head_title|safe_join(' | ') }}</title>
       <meta name="description" content="Vue Custom Elements in Drupal">
 
-      {# <link rel="icon" href="/themes/custom/custom_elements/dist/favicon.svg" type="image/svg+xml"> #}
-      {# <meta name="msapplication-TileColor" content="#00aba9">
-      <meta name="theme-color" content="#ffffff"> #}
-
       <link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/custom_elements/dist/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/themes/custom/custom_elements/dist/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="/themes/custom/custom_elements/dist/favicon-16x16.png">
@@ -56,8 +52,15 @@
       <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
       <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/vue.runtime.esm-browser.prod.js"></script>
       <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script>
+      {# prod end header #}
+
+      {# Add loading="eager" to images in viewport and loading="lazy" to every other #}
+      <script>
+        {% include "@custom_elements/img-loading.js" %}
+      </script>
     </head>
     <body{{ attributes }}>
+
 
       {{ page_top }}
       {{ page }}
@@ -68,20 +71,5 @@
       {# prod end body #}
 
       <js-bottom-placeholder token="{{ placeholder_token|raw }}">
-
-      <script>
-        function isInViewport(element) {
-          const rect = element.getBoundingClientRect();
-          return (
-              rect.top >= 0 &&
-              rect.left >= 0 &&
-              rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-              rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-          );
-         }
-         document.querySelectorAll('img').forEach(img => {
-           isInViewport(img) && img.removeAttribute('loading')
-         })
-      </script>
     </body>
   </html>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-import { onBeforeMount, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 // const navigation = [
 //   { title: 'Article 1', href: '/node/1' },
@@ -16,7 +16,7 @@ interface MenuItem {
 
 const navigation = ref<Array<MenuItem>>()
 
-onBeforeMount(async() => {
+onMounted(async() => {
   const response = await fetch('/system/menu/main/linkset')
   const json = await response.json()
   const linkset = json.linkset
