@@ -91,7 +91,7 @@ side rendered, but the performance is excellent!
 FrontPage:  
 ![/](./docs/front-page.png)
 
-Node:
+Node:  
 ![/](./docs/node-full.png)
 
 ## Summary
