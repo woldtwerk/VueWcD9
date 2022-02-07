@@ -38,3 +38,7 @@ img {
 :not(:defined) {
   display: block;
 }
+
+dialog-offcanvas:not(:defined) {
+  display: none;
+}

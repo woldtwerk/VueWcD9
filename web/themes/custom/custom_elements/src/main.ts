@@ -1,5 +1,6 @@
 import { defineCustomElement } from '~/api/ApiCustomElements'
 import { hyphenate } from '@vue/shared'
+// import './modules/tailwind'
 
 /**
  * Import modules.

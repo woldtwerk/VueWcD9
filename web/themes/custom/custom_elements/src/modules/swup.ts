@@ -21,26 +21,28 @@ import SwupScrollPlugin from '@swup/scroll-plugin'
 /**
  * Init swup instance and attach it to window, thus other components have access to it.
  */
-const swup = new Swup({
-  ...swupOptions,
-  plugins: [
-    new SwupProgressPlugin(),
-    new SwupScrollPlugin({
-      animateScroll: false
-    })],
-});
-window.swup = swup
-
-/**
- * Rerun drupal behaviors after swup navigation.
- */
-swup.on("contentReplaced", () => {
-  swup.options.containers.forEach((container: string) => {
-    const context = document.querySelectorAll(container);
-    context.forEach((element) => {
-      if(window.hasOwnProperty('Drupal')) {
-        Drupal.attachBehaviors(element, drupalSettings);
-      }
+if(!import.meta.env.STORYBOOK) {
+  const swup = new Swup({
+    ...swupOptions,
+    plugins: [
+      new SwupProgressPlugin(),
+      new SwupScrollPlugin({
+        animateScroll: false
+      })],
+  });
+  window.swup = swup
+  
+  /**
+   * Rerun drupal behaviors after swup navigation.
+   */
+  swup.on("contentReplaced", () => {
+    swup.options.containers.forEach((container: string) => {
+      const context = document.querySelectorAll(container);
+      context.forEach((element) => {
+        if(window.hasOwnProperty('Drupal')) {
+          Drupal.attachBehaviors(element, drupalSettings);
+        }
+      });
     });
   });
-});
+}

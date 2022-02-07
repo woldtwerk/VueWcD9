@@ -17,7 +17,7 @@ interface MenuItem {
 const navigation = ref<Array<MenuItem>>()
 
 onMounted(async() => {
-  const response = await fetch('/system/menu/main/linkset')
+  const response = await fetch('https://vuewcd9.localhost/system/menu/main/linkset')
   const json = await response.json()
   const linkset = json.linkset
   navigation.value = linkset[0].item
@@ -26,7 +26,7 @@ onMounted(async() => {
 const current = ref(window.location.pathname)
 
 const goTo = (url: string) => {
-  window.swup.loadPage({
+  !import.meta.env.STORYBOOK && window.swup.loadPage({
     url,
     method: 'GET',
   })

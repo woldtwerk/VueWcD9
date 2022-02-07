@@ -10,7 +10,7 @@ const props = defineProps<{
   breadcrumbs: Page[]
 }>()
 
-const goTo = (url: string) => window.swup.loadPage({
+const goTo = (url: string) => !import.meta.env.STORYBOOK && window.swup.loadPage({
   url,
   method: 'GET',
 })

@@ -39,19 +39,26 @@
       <meta name="msapplication-TileColor" content="#2b5797">
       <meta name="msapplication-config" content="/themes/custom/custom_elements/dist/browserconfig.xml">
       <meta name="theme-color" content="#ffffff">
+      
+      {# Prevent content slash #}
+      <style>
+        dialog-offcanvas:not(:defined) {
+          display: none;
+        }
+      </style>
 
       <css-placeholder token="{{ placeholder_token|raw }}">
       <js-placeholder token="{{ placeholder_token|raw }}">
 
       {# dev start #}
-      {# <script type="module" src="https://localhost:3000/@vite/client"></script>
-      <script type="module" src="https://localhost:3000/src/main.ts"></script> #}
+      <script type="module" src="https://localhost:3000/@vite/client"></script>
+      <script type="module" src="https://localhost:3000/src/main.ts"></script>
       {# dev end #}
 
       {# prod start header #}
-      <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
+      {# <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
       <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/vue.runtime.esm-browser.prod.js"></script>
-      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script>
+      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script> #}
       {# prod end header #}
 
       {# Add loading="eager" to images in viewport and loading="lazy" to every other #}
@@ -67,7 +74,7 @@
       {{ page_bottom }}
 
       {# prod start body #}
-      <link rel='stylesheet' title="tailwind" href='/themes/custom/custom_elements/dist/style.css'>
+      {# <link rel='stylesheet' title="tailwind" href='/themes/custom/custom_elements/dist/style.css'> #}
       {# prod end body #}
 
       <js-bottom-placeholder token="{{ placeholder_token|raw }}">
